@@ -18,3 +18,4 @@ RUN apt-get update \
 		&& apt-get autoremove -y \
 		&& apt-get autoclean -y \
 		&& rm -rf /var/lib/apt/lists/*
+RUN echo "# Server Configuration File" > /etc/rstudio/rserver.conf && echo "" >> /etc/rstudio/rserver.conf && echo "rsession-which-r=/usr/bin/Revo64" >> /etc/rstudio/rserver.conf
