@@ -55,4 +55,5 @@ RUN apt-get update \
 		&& apt-get autoremove -y \
 		&& apt-get autoclean -y \
 		&& rm -rf /var/lib/apt/lists/*
+
 RUN echo "# Server Configuration File" > /etc/rstudio/rserver.conf && echo "" >> /etc/rstudio/rserver.conf && echo "rsession-which-r=/usr/bin/Revo64" >> /etc/rstudio/rserver.conf && echo "R_LIBS_SITE='/opt/microsoft/rclient/3.4.3/libraries/RServer:/opt/microsoft/rclient/3.4.3/runtime/R/share:/opt/microsoft/ropen/3.4.3/share:/usr/local/lib/R/share'" >> /opt/microsoft/rclient/3.4.3/runtime/R/etc/Renviron

@@ -64,7 +64,7 @@ RUN . /etc/os-release \
 	&& apt-get install -y azure-cli \
 		microsoft-mlserver-packages-r-9.3.0 \
 		microsoft-mlserver-mml-r-9.3.0 \
-		microsoft-mlserver-mlm-r-9.3.0
+		microsoft-mlserver-mlm-r-9.3.0 \
 	&& /opt/microsoft/mlserver/9.3.0/bin/R/activate.sh -a -l \
 	&& rm -rf /tmp/* \
 	&& apt-get autoremove -y \
