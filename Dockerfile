@@ -74,4 +74,6 @@ RUN . /etc/os-release \
 	&& apt-get autoclean -y \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN echo "# Server Configuration File" > /etc/rstudio/rserver.conf && echo "" >> /etc/rstudio/rserver.conf && echo "rsession-which-r=/opt/microsoft/mlserver/9.3.0/bin/R/R" >> /etc/rstudio/rserver.conf && echo "R_LIBS_SITE='/opt/microsoft/mlserver/9.3.0/libraries/RServer:/opt/microsoft/mlserver/9.3.0/runtime/R/share:/opt/microsoft/rclient/3.4.3/runtime/R/share:/opt/microsoft/ropen/3.4.3/share:/usr/local/lib/R/share'" >> /opt/microsoft/mlserver/9.3.0/runtime/R/etc/Renviron
+COPY rserver.conf /etc/rstudio/rserver.conf
+COPY disable_auth_rserver.conf /etc/rstudio/disable_auth_rserver.conf
+COPY Renviron /opt/microsoft/mlserver/9.3.0/runtime/R/etc/Renviron
