@@ -1,8 +1,21 @@
 # Microsoft Machine Learning Server (Developer Edition) for Docker
 
+[![](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/SaschaDittmann/docker-images-rstudio)
+[![](https://img.shields.io/github/tag/SaschaDittmann/docker-images-rstudio.svg)](https://github.com/SaschaDittmann/docker-images-rstudio)
+
 This Docker Image is for development & testing purposes ONLY.
 
 It is based on the [rocker/rstudio](https://hub.docker.com/r/rocker/rstudio-stable/) image, and adds the Microsoft Machine Learning Server platform on top of it.
+
+## Docker Images
+
+[![](https://img.shields.io/docker/pulls/bytesmith/rstudio.svg)](https://hub.docker.com/r/bytesmith/rstudio)
+[![](https://img.shields.io/docker/automated/bytesmith/rstudio.svg)](https://hub.docker.com/r/bytesmith/rstudio/builds)
+
+version          | description                               | size 
+---------------- | ----------------------------------------- | ------
+[![](https://images.microbadger.com/badges/version/bytesmith/rstudio.svg)](https://hub.docker.com/r/bytesmith/rstudio) | Latest build from the [GitHub Repo](https://github.com/SaschaDittmann/docker-images-rstudio) | [![](https://images.microbadger.com/badges/image/bytesmith/rstudio.svg)](https://microbadger.com/images/bytesmith/rstudio)
+[![](https://images.microbadger.com/badges/version/bytesmith/rstudio:9.3.0.svg)](https://hub.docker.com/r/bytesmith/rstudio) | Microsoft ML Server 9.3.0 - [GitHub Release](https://github.com/SaschaDittmann/docker-images-rstudio/releases/tag/9.3.0).  | [![](https://images.microbadger.com/badges/image/bytesmith/rstudio:9.3.0.svg)](https://microbadger.com/images/bytesmith/rstudio)
 
 ## Quickstart
 ```
