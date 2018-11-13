@@ -37,6 +37,7 @@ RUN apt-get update \
 	&& echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 	&& locale-gen en_US.utf8 \
 	&& /usr/sbin/update-locale LANG=en_US.UTF-8 \
+	&& ln -s /usr/lib/x86_64-linux-gnu/libpng16.so.16.28.0 /usr/lib/x86_64-linux-gnu/libpng12.so.0
 	&& rm -rf /tmp/* \
 	&& apt-get autoremove -y \
 	&& apt-get autoclean -y \
