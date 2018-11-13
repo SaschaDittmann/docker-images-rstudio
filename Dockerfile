@@ -57,4 +57,21 @@ RUN apt-get update \
 		&& apt-get autoclean -y \
 		&& rm -rf /var/lib/apt/lists/*
 
-RUN echo "# Server Configuration File" > /etc/rstudio/rserver.conf && echo "" >> /etc/rstudio/rserver.conf && echo "rsession-which-r=/usr/bin/Revo64" >> /etc/rstudio/rserver.conf && echo "R_LIBS_SITE='/opt/microsoft/rclient/3.4.3/libraries/RServer:/opt/microsoft/rclient/3.4.3/runtime/R/share:/opt/microsoft/ropen/3.4.3/share:/usr/local/lib/R/share'" >> /opt/microsoft/rclient/3.4.3/runtime/R/etc/Renviron
+RUN . /etc/os-release \
+	&& AZ_REPO=$(lsb_release -cs) \
+	&& echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list \
+	&& apt-get update \
+	&& apt-get install -y gnupg2 \
+	&& apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893 \
+	&& apt-get update \
+	&& apt-get install -y azure-cli \
+		microsoft-mlserver-packages-r-9.3.0 \
+		microsoft-mlserver-mml-r-9.3.0 \
+		microsoft-mlserver-mlm-r-9.3.0 \
+	&& /opt/microsoft/mlserver/9.3.0/bin/R/activate.sh -a -l \
+	&& rm -rf /tmp/* \
+	&& apt-get autoremove -y \
+	&& apt-get autoclean -y \
+	&& rm -rf /var/lib/apt/lists/*
+
+RUN echo "# Server Configuration File" > /etc/rstudio/rserver.conf && echo "" >> /etc/rstudio/rserver.conf && echo "rsession-which-r=/opt/microsoft/mlserver/9.3.0/bin/R/R" >> /etc/rstudio/rserver.conf && echo "R_LIBS_SITE='/opt/microsoft/mlserver/9.3.0/libraries/RServer:/opt/microsoft/mlserver/9.3.0/runtime/R/share:/opt/microsoft/rclient/3.4.3/runtime/R/share:/opt/microsoft/ropen/3.4.3/share:/usr/local/lib/R/share'" >> /opt/microsoft/mlserver/9.3.0/runtime/R/etc/Renviron
