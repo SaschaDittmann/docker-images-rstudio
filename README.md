@@ -15,7 +15,7 @@ It is based on the [rocker/rstudio](https://hub.docker.com/r/rocker/rstudio-stab
 version          | description                               | size 
 ---------------- | ----------------------------------------- | ------
 [![](https://images.microbadger.com/badges/version/bytesmith/rstudio.svg)](https://hub.docker.com/r/bytesmith/rstudio) | Latest build from the [GitHub Repo](https://github.com/SaschaDittmann/docker-images-rstudio) | [![](https://images.microbadger.com/badges/image/bytesmith/rstudio.svg)](https://microbadger.com/images/bytesmith/rstudio)
-[![](https://images.microbadger.com/badges/version/bytesmith/rstudio:9.3.0.svg)](https://hub.docker.com/r/bytesmith/rstudio) | Microsoft ML Server 9.3.0 - [GitHub Release](https://github.com/SaschaDittmann/docker-images-rstudio/releases/tag/9.3.0).  | [![](https://images.microbadger.com/badges/image/bytesmith/rstudio:9.3.0.svg)](https://microbadger.com/images/bytesmith/rstudio)
+[![](https://images.microbadger.com/badges/version/bytesmith/rstudio:9.3.0.svg)](https://hub.docker.com/r/bytesmith/rstudio) | Microsoft ML Server 9.3.0 - [GitHub Release](https://github.com/SaschaDittmann/docker-images-rstudio/releases/tag/9.3.0).  | [![](https://images.microbadger.com/badges/image/bytesmith/rstudio:9.3.0.svg)](https://microbadger.com/images/bytesmith/rstudio:9.3.0)
 
 ## Quickstart
 ```
