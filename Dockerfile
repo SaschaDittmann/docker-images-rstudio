@@ -1,5 +1,5 @@
 FROM rocker/rstudio-stable:3.4.3
-MAINTAINER info@bytesmith.de
+LABEL maintainer="info@bytesmith.de"
 
 ENV LC_ALL=en_US.UTF-8 \
 	LANG=en_US.UTF-8 \
