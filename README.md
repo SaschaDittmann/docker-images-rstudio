@@ -74,3 +74,7 @@ Machine Learning Server meets the needs of all constituents of the process – f
 R support is built on a legacy of Microsoft R Server 9.x and Revolution R Enterprise products. Significant machine learning and AI capabilities enhancements have been made in every release. Python support was added in the previous release. Machine Learning Server supports the full data science lifecycle of your Python-based analytics.
 
 Additionally, Machine Learning Server enables operationalization support so you can deploy your models to a scalable grid for both batch and real-time scoring.
+
+## Trademarks ##
+
+RStudio is a registered trademark of RStudio, Inc.  The use of the trademarked term RStudio and the distribution of the RStudio binaries through the images hosted on [hub.docker.com](https://registry.hub.docker.com/) has been granted by explicit permission of RStudio.  Please review [RStudio's trademark use policy](http://www.rstudio.com/about/trademark/) and address inquiries about further distribution or other questions to [permissions@rstudio.com](mailto:permissions@rstudio.com).
