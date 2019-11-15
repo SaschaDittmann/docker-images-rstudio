@@ -11,12 +11,12 @@ LABEL maintainer="info@bytesmith.de" \
 	  org.label-schema.vcs-ref=$VCS_REF \
 	  org.label-schema.vcs-url="https://github.com/SaschaDittmann/docker-images-rclient" \
 	  org.label-schema.version=$RCLIENT_VERSION \
-	  org.label-schema.schema-version="1.0" \
-	  MKL_CBWR="AUTO"
+	  org.label-schema.schema-version="1.0"
 
 ENV LC_ALL=en_US.UTF-8 \
 	LANG=en_US.UTF-8 \
-	LANGUAGE=en_US.UTF-8
+	LANGUAGE=en_US.UTF-8 \
+	MKL_CBWR="AUTO"
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
@@ -71,8 +71,9 @@ RUN apt-get update \
 		&& rm -rf /var/lib/apt/lists/*
 
 RUN . /etc/os-release \
-	&& echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $UBUNTU_CODENAME main" | \
-		tee /etc/apt/sources.list.d/azure-cli.list \
+	&& AZ_REPO=$(lsb_release -cs) \
+	&& echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+		sudo tee /etc/apt/sources.list.d/azure-cli.list \
 	&& apt-get update \
 	&& apt-get install -y gnupg2 \
 	&& apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893 \
