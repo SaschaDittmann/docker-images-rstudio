@@ -2,6 +2,8 @@
 
 [![](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/SaschaDittmann/docker-images-rstudio)
 [![](https://img.shields.io/github/tag/SaschaDittmann/docker-images-rstudio.svg)](https://github.com/SaschaDittmann/docker-images-rstudio)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![](https://ga4gh.azurewebsites.net/api?repo=docker-images-rstudio)](https://github.com/SaschaDittmann/gaforgithub)
 
 This Docker Image is for development & testing purposes ONLY.
 
