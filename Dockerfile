@@ -1,9 +1,22 @@
-FROM rocker/rstudio-stable:3.4.3
-LABEL maintainer="info@bytesmith.de"
+FROM rocker/rstudio-stable:3.5.2
+ARG VCS_REF
+ARG BUILD_DATE
+ARG RCLIENT_VERSION=3.5.2
+ARG MLSERVER_VERSION=9.4.7
+LABEL maintainer="info@bytesmith.de" \
+	  org.label-schema.build-date=$BUILD_DATE \
+	  org.label-schema.name="R Server with Microsoft R Client on Linux for Docker" \
+	  org.label-schema.description="Microsoft R Client is a free, community-supported, data science tool for high performance analytics. R Client is built on top of Microsoft R Open so you can use any open source R package. It also introduces the powerful ScaleR technology to benefit from parallelization and remote computing." \
+	  org.label-schema.url="https://docs.microsoft.com/en-us/machine-learning-server/r-client/what-is-microsoft-r-client" \
+	  org.label-schema.vcs-ref=$VCS_REF \
+	  org.label-schema.vcs-url="https://github.com/SaschaDittmann/docker-images-rclient" \
+	  org.label-schema.version=$RCLIENT_VERSION \
+	  org.label-schema.schema-version="1.0"
 
 ENV LC_ALL=en_US.UTF-8 \
 	LANG=en_US.UTF-8 \
-	LANGUAGE=en_US.UTF-8
+	LANGUAGE=en_US.UTF-8 \
+	MKL_CBWR="AUTO"
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
@@ -51,7 +64,7 @@ RUN apt-get update \
 		&& dpkg -i packages-microsoft-prod.deb \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		microsoft-r-client-packages-3.4.3 \
+		microsoft-r-client-packages-$RCLIENT_VERSION \
 	&& rm -rf /tmp/* \
 		&& apt-get autoremove -y \
 		&& apt-get autoclean -y \
@@ -59,16 +72,18 @@ RUN apt-get update \
 
 RUN . /etc/os-release \
 	&& AZ_REPO=$(lsb_release -cs) \
-	&& echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list \
+	&& echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+		sudo tee /etc/apt/sources.list.d/azure-cli.list \
 	&& apt-get update \
 	&& apt-get install -y gnupg2 \
 	&& apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893 \
 	&& apt-get update \
-	&& apt-get install -y azure-cli \
-		microsoft-mlserver-packages-r-9.3.0 \
-		microsoft-mlserver-mml-r-9.3.0 \
-		microsoft-mlserver-mlm-r-9.3.0 \
-	&& /opt/microsoft/mlserver/9.3.0/bin/R/activate.sh -a -l \
+	&& apt-get install -y --no-install-recommends \
+		azure-cli \
+		microsoft-mlserver-packages-r-$MLSERVER_VERSION \
+		microsoft-mlserver-mlm-r-$MLSERVER_VERSION \
+		microsoft-mlserver-adminutil-$MLSERVER_VERSION \
+	&& /opt/microsoft/mlserver/$MLSERVER_VERSION/bin/R/activate.sh -a -l \
 	&& rm -rf /tmp/* \
 	&& apt-get autoremove -y \
 	&& apt-get autoclean -y \
@@ -76,4 +91,4 @@ RUN . /etc/os-release \
 
 COPY rserver.conf /etc/rstudio/rserver.conf
 COPY disable_auth_rserver.conf /etc/rstudio/disable_auth_rserver.conf
-COPY Renviron /opt/microsoft/mlserver/9.3.0/runtime/R/etc/Renviron
+COPY Renviron /opt/microsoft/mlserver/$MLSERVER_VERSION/runtime/R/etc/Renviron

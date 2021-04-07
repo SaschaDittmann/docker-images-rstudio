@@ -40,8 +40,8 @@ TAR=${TAR-'tar'}
 ## System and compiler types.
 R_SYSTEM_ABI='linux,gcc,gxx,gfortran,?'
 
-R_LIBS_USER=${R_LIBS_USER-'/usr/local/lib/R/site-library:~/R/x86_64-pc-linux-gnu-library/3.4'}
-#R_LIBS_USER=${R_LIBS_USER-'~/Library/R/3.4/library'}
+R_LIBS_USER=${R_LIBS_USER-'/usr/local/lib/R/site-library:~/R/x86_64-pc-linux-gnu-library/3.5'}
+#R_LIBS_USER=${R_LIBS_USER-'~/Library/R/3.5/library'}
 
 ### Local Variables: ***
 ### mode: sh ***
@@ -50,4 +50,4 @@ R_LIBS_USER=${R_LIBS_USER-'/usr/local/lib/R/site-library:~/R/x86_64-pc-linux-gnu
 
 PATH=/usr/lib/rstudio-server/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 R_LIBS=${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}
-R_LIBS_SITE=${R_LIBS_SITE-'/opt/microsoft/mlserver/9.3.0/libraries/RServer:/opt/microsoft/mlserver/9.3.0/runtime/R/share:/opt/microsoft/rclient/3.4.3/runtime/R/share:/opt/microsoft/ropen/3.4.3/share:/usr/local/lib/R/share'}
+R_LIBS_SITE=${R_LIBS_SITE-'/opt/microsoft/mlserver/9.4.7/libraries/RServer:/opt/microsoft/mlserver/9.4.7/runtime/R/share:/opt/microsoft/rclient/3.5.2/runtime/R/share:/opt/microsoft/ropen/3.5.2/share:/usr/local/lib/R/share'}
